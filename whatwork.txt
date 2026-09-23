@@ -1,0 +1,57 @@
+# CODEBASE EXPLANATION & LOGIC ARCHITECTURE
+
+This document explains the purpose of every major file in the project and the logic behind it, making it easy to understand the architecture of this Meesho Replica.
+
+--------------------------------------------------
+1. CORE SETUP FILES
+--------------------------------------------------
+- package.json / vite.config.js:
+  These files configure our build tool (Vite) and list the dependencies we installed (like react-router-dom and react-icons).
+
+- src/main.jsx:
+  The entry point of the React application. It grabs the root HTML element and injects our <App /> component into it.
+
+- src/index.css:
+  The global design system. Instead of hardcoding colors everywhere, we define variables here (e.g., --color-primary: #9f2089). This ensures the Meesho purple is perfectly consistent across the whole app.
+
+--------------------------------------------------
+2. ROUTING & STATE MANAGEMENT
+--------------------------------------------------
+- src/App.jsx:
+  Acts as the traffic controller. It uses `<BrowserRouter>` to map URLs to specific page components (e.g., "/" goes to Home, "/cart" goes to Cart, "/product/:id" goes to ProductDetails). It also wraps the whole app in `<CartProvider>` so every page can access cart data.
+
+- src/context/CartContext.jsx:
+  The brain of the shopping cart. Instead of passing cart data down through every single component (prop-drilling), we store the `cartItems` array here. It exports functions like `addToCart`, `removeFromCart`, `updateQuantity`, and calculates totals dynamically. Any component can "subscribe" to this context using `useContext(CartContext)`.
+
+- src/data/products.js:
+  A temporary mock database containing an array of javascript objects. Each object represents a product with an ID, title, price, image, rating, etc. In the next phase, this will be replaced by API calls to a real backend database.
+
+--------------------------------------------------
+3. PAGES (The Main Views)
+--------------------------------------------------
+- src/pages/Home.jsx & Home.css:
+  The main landing page. It acts as a container assembling the Header, CategoryBar, Trust Banner, Sidebar, and ProductGrid together. 
+
+- src/pages/ProductDetails.jsx & ProductDetails.css:
+  The dynamic product page. It uses the `useParams()` hook to read the `:id` from the URL (e.g., /product/4), finds that specific product in `products.js`, and displays its images, details, and "Add to Cart" button.
+
+- src/pages/Cart.jsx & Cart.css:
+  Reads the global cart state from `CartContext`. If empty, it shows an empty cart image. If full, it maps over the items to render `<CartItem />` components and calculates the final bill. It also houses the complex logic for the "EDIT ITEM" sliding modal popup.
+
+--------------------------------------------------
+4. REUSABLE COMPONENTS
+--------------------------------------------------
+- src/components/Header: 
+  The top navigation bar containing the logo, search bar, and cart icon with a dynamic badge showing how many items are in the cart.
+
+- src/components/CategoryBar:
+  The horizontal list of categories below the header. It contains the complex CSS and JSX logic for the hover-triggered "Mega Menu" dropdown.
+
+- src/components/Sidebar:
+  The left-side filter panel on the homepage containing checkboxes and sort options.
+
+- src/components/ProductGrid & ProductCard:
+  ProductGrid maps over our array of products and renders a ProductCard for each one. ProductCard is responsible for the pixel-perfect display of the image, truncated title, prices, and green rating pills.
+
+- src/components/CartItem:
+  Displays an individual item row inside the Cart page. It receives the `onEdit` function as a prop, which it triggers when you click the "EDIT" text, telling the parent Cart page to open the edit modal.
