@@ -1,0 +1,233 @@
+.product-details-page {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+.product-details-layout {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: flex-start;
+}
+
+.product-gallery {
+  display: flex;
+  gap: var(--spacing-md);
+  width: 50%;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  width: 70px;
+}
+
+.thumbnail {
+  width: 70px;
+  height: 70px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.thumbnail.active {
+  border-color: var(--color-primary);
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.main-image-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+  padding: var(--spacing-md);
+}
+
+.action-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.add-cart-btn-large, .buy-now-btn {
+  flex: 1;
+  padding: 16px;
+  font-size: 18px;
+}
+
+.product-info-section {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.info-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-lg);
+  background-color: var(--color-surface);
+}
+
+.details-title {
+  font-size: 18px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+}
+
+.details-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.details-price {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-price);
+}
+
+.details-original-price {
+  font-size: 18px;
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+
+.details-discount {
+  font-size: 18px;
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.deal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--spacing-md);
+}
+
+.deal-badge > span:first-child {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.deal-timer {
+  background-color: #fff0ec;
+  color: #ff5e3a;
+  border: 1px solid #ff5e3a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.details-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.select-size h3 {
+  font-size: 18px;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.size-pills {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.size-pill {
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.size-pill.active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  font-weight: 600;
+}
+
+.highlights-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.highlights-header h3 {
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.copy-btn {
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.highlight-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.highlight-value {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.additional-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .product-details-layout {
+    flex-direction: column;
+  }
+  
+  .product-gallery, .product-info-section {
+    width: 100%;
+  }
+}
